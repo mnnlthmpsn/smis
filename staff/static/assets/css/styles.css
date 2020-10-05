@@ -1,0 +1,17 @@
+.d_btn {
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+  color: white;
+}
+
+.d_btn:hover {
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+  color: white;
+}
+
+a {
+  text-decoration: none !important;
+}

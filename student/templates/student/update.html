@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="justify-content-center row">
+    <form class="col-8" style="margin-top: 15px;" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-group"><button class="btn btn-primary w-100" type="submit">Update Student</button></div>
+    </form>
+</div>
+{% endblock %}

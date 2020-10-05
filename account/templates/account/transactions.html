@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block pageTitle %}
+Transactions on Account
+{% endblock %}
+
+{% block addBtn %}
+{% endblock %}
+
+{% block content %}
+<div class="table-responsive" style="margin-top: 30px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width: 5%;">#</th>
+                <th>Student</th>
+                <th>Date</th>
+                <th style="width: 300px;">Transaction</th>
+                <th>Amount</th>
+                <th>Receipts</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ transaction.account }}</td>
+                <td>
+                    {{ transaction.date }}
+                </td>
+                <td>{{ transaction.description }}</td>
+                <td>GHc {{ transaction.amount }}</td>
+                <td>
+                    <a href="{% url 'account:generate' transaction.id %}" target="_blank">
+                        <button class="btn btn-outline-success">Generate</button>
+                    </a>
+                </td>
+                {% empty %}
+                <p class="lead text-center mt-5">No Transactions made</p>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

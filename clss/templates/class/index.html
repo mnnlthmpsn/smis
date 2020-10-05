@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block pageTitle %}
+Class Administration
+{% endblock %}
+
+{% block addBtn %}
+<a href="{% url 'class:add' %}"><button class="btn btn-outline-primary" type="button">Add Class</button></a>
+{% endblock %}
+
+{% block content %}
+<div class="table-responsive" style="margin-top: 30px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width: 5%;">#</th>
+                <th>Class Name</th>
+                <th style="width: 300px;">Fee</th>
+                <th style="width: 200px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for class in classes %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>
+                    <a href="{% url 'class:update' class.id %}">{{ class.name }}</a>
+                </td>
+                <td>{{ class.fee }}</td>
+                <td>
+                    <a href="{% url 'class:delete' class.id %}"><button class="btn btn-primary bg-danger border-danger" type="button" style="margin-left: 5px;">Delete</button></a>
+                </td>
+                {% empty %}
+                <p class="lead text-center mt-5">No classes added yet</p>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

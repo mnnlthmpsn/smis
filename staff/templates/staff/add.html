@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block pageTitle %}
+Staff Administration
+{% endblock %}
+
+{% block addBtn %}
+{% endblock %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="justify-content-center row">
+    <form class="col-8" style="margin-top: 15px;" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-group"><button class="btn btn-primary w-100" type="submit">Add Teacher</button></div>
+    </form>
+</div>{% endblock %}

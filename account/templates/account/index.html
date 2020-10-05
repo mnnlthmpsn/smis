@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block pageTitle %}Account Details{% endblock %}
+
+{% block content %}
+<div class="table-responsive" style="margin-top: 30px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th style="width: 300px;">Amount Owing</th>
+                <th style="width: 400px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="{% url 'student:update' account.student.id %}">{{ account }}</a>
+                </td>
+                <td>{{ account.amount }}</td>
+                <td>
+                    <a href="{% url 'student:pay_fees' account.student.id %}"><button class="btn btn-primary bg-primary border-primary"
+                        type="button" style="margin-left: 5px;">Pay Fees</button></a>
+                    <a href="{% url 'account:transactions' account.id %}"><button class="btn btn-success bg-success border-success"
+                            type="button" style="margin-left: 5px;">View Statements</button></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

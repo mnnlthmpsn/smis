@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block addBtn %}
+{% endblock %}
+
+{% block content %}
+<div class="justify-content-center row">
+    <form class="col-8" style="margin-top: 15px;" method="post" action="{% url 'class:add' %}">
+        {% csrf_token %}
+        <h4 class="text-center" style="margin-bottom: 29px;margin-top: 14px;">Add Class</h4>
+        <div class="form-group"><label>Name</label><input class="form-control" type="text" name="name" placeholder="Class Name here"></div>
+        <div class="form-group"><label>Fee</label><input class="form-control" type="text" name="fee" placeholder="Class Fee here"></div>
+        <div class="form-group"><button class="btn btn-primary w-100" type="submit">Add Class</button></div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block pageTitle %}
+Staff Administration
+{% endblock %}
+
+{% block addBtn %}
+<a href="{% url 'staff:add' %}"><button class="btn btn-outline-primary" type="button">Add Staff</button></a>
+{% endblock %}
+
+{% block content %}
+<div class="table-responsive" style="margin-top: 30px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width: 5%;">#</th>
+                <th>Name</th>
+                <th style="width: 300px;">Can Login?</th>
+                <th style="width: 200px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for staff in all_staff %}
+            <tr>
+                <td>1</td>
+                <td>
+                    <a href="{% url 'staff:update' staff.id %}">{{ staff.name }}</a>
+                </td>
+                <td>
+                    {{ staff.can_login }}
+                </td>
+                <td>
+                    <a href="{% url 'staff:delete' staff.id %}"><button class="btn btn-primary bg-danger border-danger" type="button" style="margin-left: 5px;">Delete</button></div>
+                </td>
+            </tr>
+            {% empty %}
+            <p class="text-center mt-5 lead">No Staff Item added yet</p>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

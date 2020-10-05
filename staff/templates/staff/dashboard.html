@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if request.user.can_login %}
+<div class="container">
+    <div class="row justify-content-center align-items-center mt-5">
+        <div class="col">
+            <a href="{% url 'student:index' %}">
+                <div class="shadow-lg d-lg-flex justify-content-lg-center align-items-lg-center d_btn btn bg-info" data-bs-hover-animate="pulse">
+                    <h3><i class="fa fa-graduation-cap" style="margin-right: 10px;"></i>Students</h3>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="{% url 'staff:index' %}">
+                <div class="shadow-lg d-lg-flex justify-content-lg-center align-items-lg-center d_btn btn bg-danger" data-bs-hover-animate="pulse">
+                    <h3><i class="fa fa-users" style="margin-right: 10px;"></i>Staff</h3>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="{% url 'class:index' %}">
+                <div class="shadow-lg d-lg-flex justify-content-lg-center align-items-lg-center d_btn btn bg-warning" data-bs-hover-animate="pulse">
+                    <h3><i class="fa fa-file" style="margin-right: 10px;"></i>Classes</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% else %}
+<p class="text-center">Sorry you're not authorized</p>
+{% endif %}
+{% endblock %}
