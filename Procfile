@@ -1,3 +1,3 @@
-web: gunicorn smis.wsgi.application --log-file -
+web: gunicorn smis.wsgi --log-file -
 python manage.py makemigrations
 python manage.py migrate
