@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
 from .models import Staff
@@ -26,13 +27,17 @@ def view(request):
 
 @login_required
 def add(request):
-    form = UserCreationForm()
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('staff:index'))
-    return render(request, 'staff/add.html', {'form': form})
+    try:
+        form = UserCreationForm()
+        if request.method == 'POST':
+            form = UserCreationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect(reverse('staff:index'))
+        return render(request, 'staff/add.html', {'form': form})
+    except Exception as e:
+        messages.add_message(request, messages.WARNING, e)
+        return render(request, 'staff/add.html', {'form': form})
 
 @login_required
 def update(request, staff_id):
@@ -47,5 +52,10 @@ def update(request, staff_id):
 
 @login_required
 def delete(request, staff_id):
-    staff = Staff.objects.get(id=staff_id).delete()
+    Staff.objects.get(id=staff_id).delete()
     return HttpResponseRedirect(reverse('staff:index'))
+
+
+def error_404(request, exception):
+        data = {}
+        return render(request,'404.html', data)

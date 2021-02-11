@@ -12,7 +12,6 @@ class Student(models.Model):
         ('o', 'other')
     ]
     
-    avatar = models.ImageField(upload_to='uploads/', blank=True, null=True)
     firstname = models.CharField(max_length=20, blank=False, null=False, default='Firstname')
     lastname = models.CharField(max_length=50, blank=False, null=False, default='Last Name')
     other_names = models.CharField(max_length=50, blank=True, null=True)

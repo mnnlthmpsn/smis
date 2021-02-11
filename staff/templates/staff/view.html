@@ -4,11 +4,18 @@
 Staff Administration
 {% endblock %}
 
-{% block addBtn %}
-<a href="{% url 'staff:add' %}"><button class="btn btn-outline-primary" type="button">Add Staff</button></a>
-{% endblock %}
 
 {% block content %}
+<div class="row justify-content-between">
+    <span class="mt-5">
+        <i class="fa fa-home fa-lg"></i>
+        <a href="/dashboard"> Home</a>
+    </span>
+    <a href="{% url 'staff:add' %}" class="mt-5">
+        <button class="btn btn-info" type="button"> <i class="fa fa-plus"></i> Add Staff</button>
+    </a>
+</div>
+
 <div class="table-responsive" style="margin-top: 30px;">
     <table class="table">
         <thead>
@@ -30,14 +37,16 @@ Staff Administration
                     {{ staff.can_login }}
                 </td>
                 <td>
-                    <a href="{% url 'staff:delete' staff.id %}"><button class="btn btn-primary bg-danger border-danger" type="button" style="margin-left: 5px;">Delete</button></div>
-                </td>
-            </tr>
-            {% empty %}
-            <p class="text-center mt-5 lead">No Staff Item added yet</p>
-            {% endfor %}
-        </tbody>
-    </table>
+                    <a href="{% url 'staff:delete' staff.id %}"><button class="btn btn-primary bg-danger border-danger"
+                            type="button" style="margin-left: 5px;">Delete</button>
+</div>
+</td>
+</tr>
+{% empty %}
+<p class="text-center mt-5 lead">No Staff Item added yet</p>
+{% endfor %}
+</tbody>
+</table>
 </div>
 
 {% endblock %}

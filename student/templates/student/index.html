@@ -1,7 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="table-responsive" style="margin-top: 30px;">
+
+<div class="row justify-content-between">
+    <span class="mt-5">
+        <i class="fa fa-home fa-lg"></i>
+        <a href="/dashboard"> Home</a>
+    </span>
+    <a href="{% url 'student:enroll' %}" class="mt-5">
+        <button class="btn btn-info" type="button"><i class="fa fa-plus"></i> Enroll Student</button>
+    </a>
+</div>
+<div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
@@ -31,7 +41,8 @@
                             <button class="btn btn-outline-primary" type="button">Account</button>
                         </a>
                         <a href="{% url 'student:delete' student.id %}">
-                            <button class="btn btn-primary bg-danger border-danger" type="button" style="margin-left: 5px;">Delete</button>
+                            <button class="btn btn-primary bg-danger border-danger" type="button"
+                                style="margin-left: 5px;">Delete</button>
                         </a>
                     </div>
                 </td>

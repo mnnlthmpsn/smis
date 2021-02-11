@@ -1,17 +1,33 @@
-.d_btn {
-  height: 300px;
-  width: 300px;
-  border-radius: 10px;
-  color: white;
+body {
+  font-family: 'Montserrat', sans-serif;
 }
 
-.d_btn:hover {
-  height: 300px;
-  width: 300px;
-  border-radius: 10px;
-  color: white;
-}
-
-a {
+.myDiv > a {
+  color: white !important;
   text-decoration: none !important;
+  width: 100%;
+}
+
+.box {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.square {
+  padding-top: 46%;
+  padding-bottom: 46%;
+}
+
+.box:before {
+  content: "";
+  display: block;
 }

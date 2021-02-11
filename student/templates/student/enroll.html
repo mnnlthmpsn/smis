@@ -4,9 +4,24 @@
 
 {% load crispy_forms_tags %}
 
+<div class="row justify-content-between">
+    <div class="row">
+        <span class="mt-5">
+            <i class="fa fa-home fa-lg"></i>
+            <a href="/dashboard"> Home</a> <i class="mx-2">/</i>
+        </span> 
+        <span class="mt-5">
+            <a href="/student"> Students </a> <i class="mx-2">/</i>
+        </span> 
+        <span class="mt-5">
+            <p> Enroll Student</p>
+        </span>
+    </div>
+</div>
+
 <div class="justify-content-center row">
-    <form class="col-10" style="margin-top: 15px;" method="post">
-        <p class="lead text-center my-3">Enroll Student</p>
+    <form class="col-10" method="post">
+        <p class="lead text-center my-5">Enroll Student</p>
     {% csrf_token %}
     {{ form|crispy }}
     <div class="form-group"><button class="btn btn-primary w-25" type="submit">Enroll Student</button></div>

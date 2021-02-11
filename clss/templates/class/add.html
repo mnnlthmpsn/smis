@@ -4,12 +4,45 @@
 {% endblock %}
 
 {% block content %}
+
+
+<div class="row justify-content-between">
+    <div class="row">
+        <span class="mt-5">
+            <i class="fa fa-home fa-lg"></i>
+            <a href="/dashboard"> Home</a> <i class="mx-2">/</i>
+        </span>
+        <span class="mt-5">
+            <a href="/class"> Classes </a> <i class="mx-2">/</i>
+        </span>
+        <span class="mt-5">
+            <p> Add Class</p>
+        </span>
+    </div>
+</div>
+
 <div class="justify-content-center row">
-    <form class="col-8" style="margin-top: 15px;" method="post" action="{% url 'class:add' %}">
+    <div class="col-6">
+        {% if messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+    </div>
+    <form class="col-8" method="post" action="{% url 'class:add' %}">
         {% csrf_token %}
         <h4 class="text-center" style="margin-bottom: 29px;margin-top: 14px;">Add Class</h4>
-        <div class="form-group"><label>Name</label><input class="form-control" type="text" name="name" placeholder="Class Name here"></div>
-        <div class="form-group"><label>Fee</label><input class="form-control" type="text" name="fee" placeholder="Class Fee here"></div>
+        <div class="form-group"><label>Name</label><input class="form-control" type="text" name="name"
+                placeholder="Class Name here"></div>
+        <div class="form-group"><label>Fee</label><input class="form-control" type="text" name="fee"
+                placeholder="Class Fee here"></div>
         <div class="form-group"><button class="btn btn-primary w-100" type="submit">Add Class</button></div>
     </form>
 </div>

@@ -11,8 +11,24 @@ Staff Administration
 
 {% load crispy_forms_tags %}
 
+<div class="row justify-content-between">
+    <div class="row">
+        <span class="mt-5">
+            <i class="fa fa-home fa-lg"></i>
+            <a href="/dashboard"> Home</a> <i class="mx-2">/</i>
+        </span> 
+        <span class="mt-5">
+            <a href="/staff"> Staff </a> <i class="mx-2">/</i>
+        </span> 
+        <span class="mt-5">
+            <p> Add Staff</p>
+        </span>
+    </div>
+</div>
+
 <div class="justify-content-center row">
     <form class="col-8" style="margin-top: 15px;" method="POST">
+        <p class="lead text-center my-5">Add Staff</p>
         {% csrf_token %}
         {{ form|crispy }}
         <div class="form-group"><button class="btn btn-primary w-100" type="submit">Add Teacher</button></div>

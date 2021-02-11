@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 # views
-from staff.views import index, dashboard
+from staff.views import index, dashboard, error_404
 
 urlpatterns = [
     path('', index, name='index'),
@@ -13,3 +13,5 @@ urlpatterns = [
     path('staff/', include('staff.urls')),
     path('student/', include('student.urls')),
 ]
+
+handler404 = error_404
