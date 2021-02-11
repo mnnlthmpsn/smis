@@ -8,13 +8,19 @@ from .admin import UserCreationForm, UserChangeForm
 
 # Create your views here.
 def index(request):
-    logout(request)
-    if request.method == 'POST':
-        user = authenticate(request, email=request.POST.get('email'), password=request.POST.get('password'))
-        if user is not None:
-            login(request, user)
-            return HttpResponseRedirect(reverse('dashboard'))
-    return render(request, 'staff/index.html')
+    try:
+        logout(request)
+        if request.method == 'POST':
+            user = authenticate(request, email=request.POST.get('email'), password=request.POST.get('password'))
+            if user is None:
+                raise Exception("Please check login Details")
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect(reverse('dashboard'))
+        return render(request, 'staff/index.html')
+    except Exception as e:
+        messages.add_message(request, messages.ERROR, e)
+        return render(request, 'staff/index.html')
 
 @login_required
 def dashboard(request):
@@ -57,5 +63,9 @@ def delete(request, staff_id):
 
 
 def error_404(request, exception):
+        data = {}
+        return render(request,'404.html', data)
+
+def error_505(request, exception):
         data = {}
         return render(request,'404.html', data)
