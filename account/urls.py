@@ -6,5 +6,5 @@ app_name = 'account'
 urlpatterns = [
     path('<int:student_id>/student/', index, name='index'),
     path('<int:account_id>/transactions/', get_transactions, name='transactions'),
-    path('<int:transaction_id>/transaction/', generate_pdf, name='generate')
+    path('<int:pk>/transaction/', render_pdf_view, name='generate')
 ]

@@ -8,15 +8,26 @@ Transactions on Account
 {% endblock %}
 
 {% block content %}
-<div class="table-responsive" style="margin-top: 30px;">
+<div class="row justify-content-between">
+    <span class="mt-5">
+        <i class="fa fa-home fa-lg"></i>
+        <a href="/dashboard"> Home</a>
+    </span>
+    <a href="{% url 'student:index' %}" class="mt-5">
+        <button class="btn btn-info" type="button"><i class="fa fa-eye"></i> Students</button>
+    </a>
+</div>
+
+<div class="table-responsive mt-5">
     <table class="table">
         <thead>
             <tr>
                 <th style="width: 5%;">#</th>
                 <th>Student</th>
                 <th>Date</th>
-                <th style="width: 300px;">Transaction</th>
-                <th>Amount</th>
+                <th>Transaction</th>
+                <th>Amount Paid</th>
+                <!-- <th>Amount Left</th> -->
                 <th>Receipts</th>
             </tr>
         </thead>
@@ -29,7 +40,8 @@ Transactions on Account
                     {{ transaction.date }}
                 </td>
                 <td>{{ transaction.description }}</td>
-                <td>GHc {{ transaction.amount }}</td>
+                <td><strong class="text-success">GHc {{ transaction.amount }}</strong></td>
+                <!-- <td><strong class="text-danger">GHc {{ transaction.account.amount }}</strong></td> -->
                 <td>
                     <a href="{% url 'account:generate' transaction.id %}" target="_blank">
                         <button class="btn btn-outline-success">Generate</button>
