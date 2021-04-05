@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'num2words',
     'clss', 'staff', 'student', 'account', 'crispy_forms'
 ]
 
